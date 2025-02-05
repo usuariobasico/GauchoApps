@@ -1,0 +1,30 @@
+buildscript {
+    ext.kotlin_version = '1.8.22' // O la versión que uses de Kotlin
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.3.0' // Asegúrate de que esta línea esté CORRECTA
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Si usas Kotlin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    buildDir = "${rootProject.buildDir}/${project.name}"
+    evaluationDependsOn(':app') // Muy importante: asegúrate de que esta línea esté presente
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
