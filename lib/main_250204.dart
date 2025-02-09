@@ -13,6 +13,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,6 +27,8 @@ class MyApp extends StatelessWidget {
 }
 
 class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
+
   @override
   _CounterScreenState createState() => _CounterScreenState();
 }
@@ -89,7 +93,7 @@ class _CounterScreenState extends State<CounterScreen> {
                           setState(() {});
                         },
                       );
-                    }).toList(),
+                    }),
                 ],
               ),
               actions: [
@@ -243,8 +247,7 @@ class _CounterScreenState extends State<CounterScreen> {
 
   Future<void> _shareSession() async {
     try {
-      final sessionData = 'Sesión ${DateTime.now()}\nTotal: ${_getTotalCount()}\n' +
-          categories.map((cat) => '${cat['name']}: ${cat['count']}').join('\n');
+      final sessionData = 'Sesión ${DateTime.now()}\nTotal: ${_getTotalCount()}\n${categories.map((cat) => '${cat['name']}: ${cat['count']}').join('\n')}';
 
       if (kIsWeb || Platform.isWindows) {
         await Clipboard.setData(ClipboardData(text: sessionData));

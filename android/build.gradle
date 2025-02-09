@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.3.0' // Asegúrate de que esta línea esté CORRECTA
+        classpath 'com.android.tools.build:gradle:8.1.0' // Asegúrate de que esta línea esté CORRECTA
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Si usas Kotlin
     }
 }
